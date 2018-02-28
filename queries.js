@@ -13,14 +13,14 @@ module.exports = {
     return database('resolution')
       .insert(resolution)
       .returning('*')
-      .then(resolution => resolution[0]);
+      .then(record => record[0]);
   },
   update(id, resolution) {
     return database('resolution')
       .update(resolution)
       .where('id', id)
       .returning('*')
-      .then(resolution => resolution[0]);
+      .then(record => record[0]);
   },
   delete(id) {
     return database('resolution')
