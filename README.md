@@ -65,3 +65,71 @@ Deploy this API. Note that you'll need to create a remote database, run your mig
 * You can test your API locally with `npm test`
 
 Add a link to your https://arcane-shelf-22854.herokuapp.com/resolutions here.
+
+--------------------------------------------------------------------------------
+Emily Pancake [4:42 PM]
+Databases and Postgres
+
+Setting up a real fuckin db:
+
+One time only:
+brew update
+brew install postgresql
+psql —version
+brew services list
+as needed:
+brew services stop postgresql
+brew services start postgresql
+brew services restart postgresql
+
+For each project:
+Make a db:
+(from anywhere I think) createdb (name)
+(psql --help)
+
+(start in a new folder not in another git repository)
+(from project folder)
+Initialize npm and install dependencies:
+npm init --yes
+npm install --save knex pg
+npm install knex -g (maybe not needed)
+npm install body-parser —save
+npm install dotenv —save
+touch .env
+npm install express —save
+
+Initialize as git repository and set remote:
+git init
+git remote add (remote name) (url)
+
+Fire up knex, migrate:
+knex init
+edit your new knexfile.js
+knex migrate:make (table name)
+update migrations file with appropriate export up and export down
+knex migrate:latest
+psql (dbname) 
+\d+ (table name) (to see your schema)
+
+if needed (knex migrate:rollback)
+
+Knex seed:
+knex seed:make data01
+go edit the seed file
+knee seed:run
+psql (dbname) 
+SELECT * FROM (table name);
+
+Deploy:
+nodemon or npm start
+(go look to see if it works at localhost:3000/(table name))
+heroku create
+go to Heroku and your new db > configure-add-ons > search postgres > big purple button > show config vars > copy the postgres url and put it in your .env file  
+
+git add .
+git commit -m “initial commit”
+git push heroku master
+
+knex migrate:latest --env production
+knex seed:run --env production
+
