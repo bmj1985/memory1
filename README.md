@@ -67,7 +67,7 @@ Deploy this API. Note that you'll need to create a remote database, run your mig
 Add a link to your https://arcane-shelf-22854.herokuapp.com/resolutions here.
 
 --------------------------------------------------------------------------------
-Emily Pancake [4:42 PM]
+
 Databases and Postgres
 
 Setting up a real fuckin db:
